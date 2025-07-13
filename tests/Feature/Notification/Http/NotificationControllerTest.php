@@ -27,7 +27,7 @@ class NotificationControllerTest extends TestCase
             'reference' => $this->faker->uuid,
         ]);
 
-        $this->getJson($uri)->assertOk();
+        $this->postJson($uri)->assertOk();
     }
 
     public function testInvalid(): void
@@ -38,7 +38,7 @@ class NotificationControllerTest extends TestCase
         ];
 
         $uri = route('notification.hook', $params);
-        $this->getJson($uri)->assertNotFound();
+        $this->postJson($uri)->assertNotFound();
     }
 
     public static function hookActionProvider(): array

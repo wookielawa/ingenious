@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final readonly class NotificationController
 {
+    /**
+     * @todo
+     *
+     * Add interface for NotificationService
+     */
     public function __construct(
         private NotificationService $notificationService,
     ) {}
