@@ -30,4 +30,10 @@ class ProductLine extends Entity
             'total'    => $this->price * $this->quantity,
         ];
     }
+
+    public function isValid(): bool
+    {
+        return $this->price > 0 && $this->quantity > 0;
+    }
+
 }
