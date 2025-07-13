@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Modules\Invoices\Domain\Factories\DraftInvoiceFactory;
 use Modules\Invoices\Domain\Factories\InvoiceFactory;
-use Modules\Invoices\Domain\Factories\UuidFactory;
+use Modules\Invoices\Domain\Factories\UuidFactory as DomainUuidFactory;
 use Modules\Invoices\Domain\Repositories\InvoiceRepository;
 use Modules\Invoices\Infrastructure\Factories\RamseyUuidFactory;
 use Modules\Invoices\Infrastructure\Repositories\EloquentInvoiceRepository;
@@ -24,12 +24,12 @@ final class InvoiceServiceProvider extends ServiceProvider implements Deferrable
 
         $this->app->bind(
             InvoiceFactory::class,
-            DraftInvoiceFactory::class
+            DraftInvoiceFactory::class,
         );
 
         $this->app->bind(
-            UuidFactory::class,
-            RamseyUuidFactory::class
+            DomainUuidFactory::class,
+            RamseyUuidFactory::class,
         );
     }
 
