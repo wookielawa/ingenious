@@ -9,4 +9,14 @@ enum StatusEnum: string
     case Draft = 'draft';
     case Sending = 'sending';
     case SentToClient = 'sent-to-client';
+
+    public function isDraft(): bool
+    {
+        return $this === self::Draft;
+    }
+
+    public function isSending(): bool
+    {
+        return $this === self::Sending;
+    }
 }
