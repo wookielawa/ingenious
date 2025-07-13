@@ -9,4 +9,8 @@ use Ramsey\Uuid\Validator\GenericValidator;
 Route::pattern('action', '^[a-zA-Z]+$');
 Route::pattern('reference', (new GenericValidator)->getPattern());
 
-Route::get('/notification/hook/{action}/{reference}', [NotificationController::class, 'hook'])->name('notification.hook');
+/**
+ * It's very likely that this route will change the state of the system,
+ * so I will change the HTTP method to POST.
+ */
+Route::post('/notification/hook/{action}/{reference}', [NotificationController::class, 'hook'])->name('notification.hook');

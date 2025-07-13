@@ -11,6 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->withProviders(
+        [
+            Modules\Invoices\Infrastructure\Providers\EventServiceProvider::class,
+        ]
+    )
     ->withMiddleware(function (Middleware $middleware) {
         //
     })

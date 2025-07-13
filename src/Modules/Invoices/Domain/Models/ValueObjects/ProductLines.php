@@ -38,7 +38,7 @@ class ProductLines extends ValueObjectArray
             $total += $productLine->total();
         }
 
-        return  $total;
+        return $total;
     }
 
     public function toArray(): array
@@ -50,4 +50,21 @@ class ProductLines extends ValueObjectArray
     {
         return $this->productLines;
     }
+
+    public function hasValidItems(): bool
+    {
+        if (empty($this->productLines)) {
+            return false;
+        }
+
+        /** @var ProductLine $productLine */
+        foreach ($this->productLines as $productLine) {
+            if ( ! $productLine->isValid()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
